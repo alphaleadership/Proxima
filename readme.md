@@ -12,17 +12,15 @@ par le proxy dans le but de créer un réseau de contenu cacher.
 
 - npm start
 
-## Utilisation postman 
+## Utilisation avec Firefox 
+Il faut aller dans "settings => proxy => manual proxy (http & https) & set `localhost` `3000`"
+Toutes les future recherches de firefox passerons donc via ce proxy a partir de maintenant.<br>
 
-Exemple de requête :  
-  
-- GET : localhost:3000/json_placeholder/posts/1   
-[Authorization] = cequevousvoulez  
-  
-- POST : localhost:3000/json_placeholder/posts  
-[Authorization] = cequevousvoulez  
-[Body] = {  
-    "title" : "test",  
-    "body" : "test",  
-    "userId" : 1   
-}  
+### Comment le script detecte une compatibilité ?
+A la visite sur un nouveau domaine, le script recherche `_paranoia.[domain] TXT` afin de recuperer une clef de chiffrement du systeme. Cette clef est ensuite utilisé par le proxy pour une communication chiffré avec le serveur.
+
+## Todo
+- key management
+- encrypted request
+- interpret response
+- exemple server
