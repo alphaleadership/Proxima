@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require("morgan");
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const dns = require('dns_lookup_plugin');
+const dns = require('dns');
 
 // Create Express Server
 const app = express();
@@ -28,7 +28,7 @@ app.use('*', async (req, res) => {
     if(!found){
         let d = {
             "domain": domain,
-            "mod": createProxyMiddleware(({target: "https://" + domain,changeOrigin: true})),
+            "mod": createProxyMiddleware(({target: "https://" + domain,changeOrigin: false})),
             "key": await getDomainKey(domain)
         }
         d.enable = d.key.length > 0 ? true : false
@@ -41,20 +41,10 @@ app.use('*', async (req, res) => {
 
 async function getDomainKey(domain){
     return await new Promise((resolve, reject) => {
-        dns.lookup("_paranoia."+domain,"txt").then((data) => {
-            if(data[0].Class.startsWith('"')){
-                resolve(data[0].Class.substring(1,data[0].Class.length-1))
-            } else if(data[0].Type.startsWith('"')){
-                resolve(data[0].Type.substring(1,data[0].Type.length-1))
-            } else if(data[0].IpAddress.startsWith('"')){
-                resolve(data[0].IpAddress.substring(1,data[0].IpAddress.length-1))
-            }
-            resolve('')
-        }).catch((err) => {
-            console.error(err);
-            resolve("")
-        })
-    })
+       dns.lookup(domain,(err, address, family) => {
+        console.log('address: %j family: IPv%s', address, family);
+        resolve(address)
+      })})
 }
 
 // Start the Proxy
