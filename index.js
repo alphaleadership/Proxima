@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require("morgan");
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const dns = require('dns');
+const fs =require("fs")
 
 // Create Express Server
 const app = express();
@@ -18,7 +19,23 @@ app.get('/info', (req, res, next) => {
     res.send('This is a proxy service which proxies to Billing and Account APIs.');
 });
 
-let db = []
+let dbgen = ()=>{
+    function init(){if(!fs.existsSync("./db.txt")){fs.writeFileSync("./db.txt","\n")}}
+    function find(query){
+        let data=fs.readFileSync("./db.txt").toString().split("\n").find(query)
+        if(data){return JSON.parse(data)}
+        
+    }
+    function push(data){
+        console.log(data)
+        fs.appendFileSync("./db.txt","\n"+`{"domain":${data.domain},"mod":${JSON.stringify(data.mod)},"key":${data.key},"enable":${data.enable}}`)
+    }
+    return{
+        init:init,find:find,push:push
+    }
+}
+const db=dbgen()
+db.init()
 
 // Full endpoint
 app.use('*', async (req, res) => {    
