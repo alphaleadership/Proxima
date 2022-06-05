@@ -773,5 +773,5 @@ var require_JsonDB = __commonJS({
 // db.mjs
 var import_node_json_db = __toESM(require_JsonDB(), 1);
 var import_JsonDBConfig = __toESM(require_JsonDBConfig(), 1);
-var db = new import_node_json_db.JsonDB(new import_JsonDBConfig.Config("proxydb", true, false, "/"));
+var db = new import_node_json_db.JsonDB(new import_JsonDBConfig.Config("proxydb", true, true, "/"));
 module.exports=db
