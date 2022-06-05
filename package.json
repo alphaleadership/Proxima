@@ -1,16 +1,22 @@
 {
   "name": "proxima",
   "version": "1.0.0",
-  "description": "",
+  "description": "Proxima est un futur serveur proxy qui a pour objectif d'encrypter le contenu qui transite \r par le proxy dans le but de créer un réseau de contenu cacher.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cyb3rghostx/Proxima.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cyb3rghostx/Proxima/issues"
+  },
+  "homepage": "https://github.com/Cyb3rghostx/Proxima#readme",
   "dependencies": {
-    "dns_lookup_plugin": "^1.0.3",
     "express": "^4.18.1",
     "http-proxy-middleware": "^2.0.6",
     "morgan": "^1.10.0"
