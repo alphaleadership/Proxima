@@ -34,14 +34,14 @@ let dbgen = ()=>{
         init:init,find:find,push:push
     }
 }
-const db=dbgen()
-db.init()
+const db=require("./db")
+
 
 // Full endpoint
 app.use('*', async (req, res) => {    
     let domain = req.hostname
     //Check if domain is in DB
-    let found = db.find(x => x.domain === domain)
+    let found = ""
     if(!found){
         let d = {
             "domain": domain,
@@ -49,9 +49,11 @@ app.use('*', async (req, res) => {
             "key": await getDomainKey(domain)
         }
         d.enable = d.key.length > 0 ? true : false
-        db.push(d)
+        console.log(d)
+        found=d
+        db.push("/"+domain,d,false)
         console.log("Added new domain: " + domain + " setting: " + d.enable)
-        found = db.find(x => x.domain === domain)
+        //found = db.find(x => x.domain === domain)
     }
     found.mod(req, res)
 });
