@@ -3,5 +3,10 @@
         "domain": "localhost",
         "key": "127.0.0.1",
         "enable": true
+    },
+    "141.95.193.94": {
+        "domain": "141.95.193.94",
+        "key": "141.95.193.94",
+        "enable": true
     }
 }

@@ -11,8 +11,9 @@ class proxy{
     render(res){
         axios.get(`${this.req.protocol}//${this.req.hostname}${this.req.originalUrl}`)
   .then(function (response) {
-    // handle success
+   console.log(response)
     res.send(response);
+return response
   })
   .catch(function (error) {
     // handle error
@@ -63,6 +64,7 @@ class proxy{
       }
      const prox=new proxy(req)
      prox.render(res)
+res.end()
   });
   
   async function getDomainKey(domain){
