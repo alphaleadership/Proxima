@@ -55,7 +55,7 @@ class proxy{
         //found = db.find(x => x.domain === domain)
     }
     if (req.method=="GET") {
-        axios.get(`${req.protocol}//${req.hostname}${req.originalUrl}`)
+        axios.get(`${req.originalUrl}`)
         .then(function (response) {
           // handle success
           res.send(response);
@@ -65,7 +65,7 @@ class proxy{
           res.send(error);
         })   
     } else {
-        axios.post(`${req.protocol}//${req.hostname}${req.originalUrl}`)
+        axios.post(`${req.originalUrl}`)
         .then(function (response) {
           // handle success
           res.send(response);
