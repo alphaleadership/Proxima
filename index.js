@@ -30,6 +30,7 @@ class proxy{
   // Info GET endpoint
   app.get('/info', (req, res, next) => {
       res.send('This is a proxy service which proxies to Billing and Account APIs.');
+res.end()
   });
   
   
@@ -59,21 +60,23 @@ class proxy{
         .then(function (response) {
           // handle success
           res.send(response);
+	res.end()
         })
         .catch(function (error) {
           // handle error
           res.send(error);
+res.end()
         })   
     } else {
         axios.post(`${req.originalUrl}`)
         .then(function (response) {
           // handle success
           res.send(response);
-        })
+       res.end() })
         .catch(function (error) {
           // handle error
           res.send(error);
-        })
+       res.end() })
     }  
      
      

@@ -28,5 +28,15 @@
         "domain": "aatwiter.wikidot.com",
         "key": "107.20.139.170",
         "enable": true
+    },
+    "r3.o.lencr.org": {
+        "domain": "r3.o.lencr.org",
+        "key": "2.17.197.25",
+        "enable": true
+    },
+    "ocsp.sca1b.amazontrust.com": {
+        "domain": "ocsp.sca1b.amazontrust.com",
+        "key": "108.156.253.141",
+        "enable": true
     }
 }
