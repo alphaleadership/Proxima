@@ -9,16 +9,8 @@ class proxy{
         this.req=req
     }
     render(res){
-        axios.get(`${this.req.protocol}//${this.req.hostname}${this.req.originalUrl}`)
-  .then(function (response) {
-   console.log(response)
-    res.send(response);
-return response
-  })
-  .catch(function (error) {
-    // handle error
-    res.send(error);
-  })
+        console.log(`${this.req.protocol}//${this.req.hostname}${this.req.originalUrl}`)
+  
   
     }
 }
@@ -30,7 +22,7 @@ return response
   
   // Configuration
   const PORT = 3000;
-  const HOST = "0.0.0.0";
+  const HOST ="0.0.0.0";
   
   // Logging
   app.use(morgan('dev'));
@@ -45,26 +37,46 @@ return response
   
   
   // Full endpoint
-  app.use('*', async (req, res) => {    
-      let domain = req.hostname
-      //Check if domain is in DB
-      let found = ""
-      if(!found){
-          let d = {
-              "domain": domain,
-              
-              "key": await getDomainKey(domain)
-          }
-          d.enable = d.key.length > 0 ? true : false
-          console.log(d)
-          found=d
-          db.push("/"+domain,d,false)
-          console.log("Added new domain: " + domain + " setting: " + d.enable)
-          //found = db.find(x => x.domain === domain)
-      }
-     const prox=new proxy(req)
-     prox.render(res)
-res.end()
+  app.use('*', async (req, res) => { 
+    let domain = req.hostname
+    //Check if domain is in DB
+    let found = ""
+    if(!found){
+        let d = {
+            "domain": domain,
+            
+            "key": await getDomainKey(domain)
+        }
+        d.enable = d.key.length > 0 ? true : false
+        console.log(d)
+        found=d
+        db.push("/"+domain,d,false)
+        console.log("Added new domain: " + domain + " setting: " + d.enable)
+        //found = db.find(x => x.domain === domain)
+    }
+    if (req.method=="GET") {
+        axios.get(`${req.protocol}//${req.hostname}${req.originalUrl}`)
+        .then(function (response) {
+          // handle success
+          res.send(response);
+        })
+        .catch(function (error) {
+          // handle error
+          res.send(error);
+        })   
+    } else {
+        axios.post(`${req.protocol}//${req.hostname}${req.originalUrl}`)
+        .then(function (response) {
+          // handle success
+          res.send(response);
+        })
+        .catch(function (error) {
+          // handle error
+          res.send(error);
+        })
+    }  
+     
+     
   });
   
   async function getDomainKey(domain){

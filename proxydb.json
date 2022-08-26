@@ -8,5 +8,25 @@
         "domain": "141.95.193.94",
         "key": "141.95.193.94",
         "enable": true
+    },
+    "pratique.leparisien.fr": {
+        "domain": "pratique.leparisien.fr",
+        "key": "51.15.185.98",
+        "enable": true
+    },
+    "e1.o.lencr.org": {
+        "domain": "e1.o.lencr.org",
+        "key": "2.17.197.25",
+        "enable": true
+    },
+    "ocsp.pki.goog": {
+        "domain": "ocsp.pki.goog",
+        "key": "172.217.16.131",
+        "enable": true
+    },
+    "aatwiter.wikidot.com": {
+        "domain": "aatwiter.wikidot.com",
+        "key": "107.20.139.170",
+        "enable": true
     }
 }
