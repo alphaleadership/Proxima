@@ -31,12 +31,62 @@
     },
     "r3.o.lencr.org": {
         "domain": "r3.o.lencr.org",
-        "key": "2.17.197.25",
+        "key": "2.17.197.27",
         "enable": true
     },
     "ocsp.sca1b.amazontrust.com": {
         "domain": "ocsp.sca1b.amazontrust.com",
-        "key": "108.156.253.141",
+        "key": "13.225.84.104",
+        "enable": true
+    },
+    "wikidot.com": {
+        "domain": "wikidot.com",
+        "key": "107.20.139.176",
+        "enable": true
+    },
+    "ocsp.digicert.com": {
+        "domain": "ocsp.digicert.com",
+        "key": "93.184.220.29",
+        "enable": true
+    },
+    "ocsp.sectigo.com": {
+        "domain": "ocsp.sectigo.com",
+        "key": "104.18.32.68",
+        "enable": true
+    },
+    "ocsp.globalsign.com": {
+        "domain": "ocsp.globalsign.com",
+        "key": "104.18.20.226",
+        "enable": true
+    },
+    "zerossl.ocsp.sectigo.com": {
+        "domain": "zerossl.ocsp.sectigo.com",
+        "key": "172.64.155.188",
+        "enable": true
+    },
+    "rtb-csync.smartadserver.com": {
+        "domain": "rtb-csync.smartadserver.com",
+        "key": "185.86.137.110",
+        "enable": true
+    },
+    "status.geotrust.com": {
+        "domain": "status.geotrust.com",
+        "key": "93.184.220.29",
+        "enable": true
+    },
+    "ocsp.godaddy.com": {
+        "domain": "ocsp.godaddy.com",
+        "key": "192.124.249.22",
+        "enable": true
+    },
+    "ocsp.usertrust.com": {
+        "domain": "ocsp.usertrust.com",
+        "key": "104.18.32.68",
+        "enable": true
+    },
+    "santea-france.be": {
+        "domain": "santea-france.be",
+        "key": "141.95.193.94",
         "enable": true
     }
 }
